@@ -103,7 +103,7 @@ dnf install -y \
     #gvfs* \
     #greetd \
 
-#rpm -qa 'qemu-user-static*' | xargs dnf remove -y
+rpm -qa 'qemu-user-static*' | xargs dnf remove -y
 
 systemctl enable tailscaled.service
 systemctl enable sshd.service
