@@ -88,17 +88,12 @@ dnf install -y \
     hyprland-qt-support \
     hyprland-autoname-workspaces \
     hyprcursor \
-    breakpad \
     cliphist \
-    danksearch \
-    dgop \
     wlogout \
     pavucontrol \
     blueman \
     mako \
     waypaper \
-    material-icons-fonts \
-    material-symbols-fonts \
 
 #dnf install -y \
     #tuned tuned-ppd \
