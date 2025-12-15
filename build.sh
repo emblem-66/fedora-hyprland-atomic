@@ -43,13 +43,23 @@ curl -sS --create-dirs -o /usr/share/containers/systemd/qbittorent.container htt
 rpm -qa | sort
 
 # Base stuff
+dnf remove -y \
+    virtualbox-guest-additions \
+    f*-backgrounds-*
+    fedora-chromium-config* \
+    fedora-bookmarks \
+    fedora-flathub-remote \
+    fedora-third-party \
+
 dnf remove -y firefox*
+#dnf remove sway*
 dnf install -y tailscale 
 dnf install -y just
 
 dnf install -y \
     ibm-plex* \
     adw-gtk3-theme \
+    adwaita-icon-theme \
     podman \
     podman-compose \
     cockpit \
@@ -79,6 +89,17 @@ dnf install -y \
     hyprland-qt-support \
     hyprland-autoname-workspaces \
     hyprcursor \
+    breakpad \
+    cliphist \
+    danksearch \
+    dgop \
+    wlogout \
+    pavucontrol \
+    blueman \
+    mako \
+    waypaper \
+    material-icons-fonts \
+    material-symbols-fonts \
 
 #dnf install -y \
     #tuned tuned-ppd \
