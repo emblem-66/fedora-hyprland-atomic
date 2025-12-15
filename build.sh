@@ -39,44 +39,60 @@ curl -sS --create-dirs -o /etc/yum.repos.d/_hyprland.repo https://copr.fedorainf
 
 #dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-dnf install -y --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+#dnf install -y --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+rpm -qa | sort
 
+# Base stuff
+dnf remove -y firefox*
+dnf install -y tailscale 
+dnf install -y just
 
 dnf install -y \
     ibm-plex* \
     adw-gtk3-theme \
+    podman \
+    podman-compose \
     cockpit \
     cockpit-podman \
 
 dnf install -y \
     hyprland hypridle hyprlock hyprpaper hyprutils hyprpolkitagent \
+    waybar \
     kitty \
     pcmanfm \
     wofi \
+    hyprutils \
+    hyprland-guiutils \
+    hyprland-autoname-workspaces \
+    hyprpaper \
+    hyprlock \
+    hypridle \
+    hyprlauncher \
+    hyprnome \
+    hyprpwcenter \
+    hyprshot \
+    hyprsysteminfo \
+    hyprwire \
+    hyprpanel \
+    hyprland-plugins \
+    hyprshot \
+    hyprland-qt-support \
+    hyprland-autoname-workspaces \
+    hyprcursor \
 
-systemctl enable cockpit.socket
-
-rpm -qa | sort
-
-
-
-dnf install -y \
-    helium-browser-bin \
-    tailscale \
-
-dnf install -y \
-    tuned tuned-ppd \
-    blueman \
-    pavucontrol alsa-sof-firmware alsa-utils \
-    iwl* nm-connection-editor-desktop NetworkManager-wifi \
-    gvfs* \
-    greetd \
+#dnf install -y \
+    #tuned tuned-ppd \
+    #blueman \
+    #pavucontrol alsa-sof-firmware alsa-utils \
+    #iwl* nm-connection-editor-desktop NetworkManager-wifi \
+    #gvfs* \
+    #greetd \
 
 #rpm -qa 'qemu-user-static*' | xargs dnf remove -y
 
-
-systemctl --quiet enable tailscaled.service
-systemctl --quiet enable sshd.service
+systemctl enable tailscaled.service
+systemctl enable sshd.service
+systemctl enable cockpit.socket
 
 #authselect enable-feature with-systemd-homed
 
@@ -84,3 +100,4 @@ systemctl --quiet enable sshd.service
 #systemctl set-default graphical.target
 
 #rm /usr/lib/systemd/system/default.target.wants/bootc-fetch-apply-updates.timer
+rpm -qa | sort
