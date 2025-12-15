@@ -45,7 +45,6 @@ rpm -qa | sort
 # Base stuff
 dnf remove -y \
     virtualbox-guest-additions \
-    #f*-backgrounds-*
     fedora-chromium-config* \
     fedora-bookmarks \
     fedora-flathub-remote \
